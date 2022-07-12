@@ -1,0 +1,29 @@
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    Dotenv.load "fastlane.env"
+    Dotenv.load "fastlane.env.ios"
+  end
+
+desc "Create on Developer Portal and App Store Connect"
+  lane :create_app do 
+   create_app_online # produce  
+end
+
+desc "Sync singing"
+  lane :signing do
+    sync_code_singing # match
+end
+
+desc "Build binary"
+  lane :build do
+   signing
+end 
+
+desc "Release"
+  lane :release do
+   build
+   end
+end
