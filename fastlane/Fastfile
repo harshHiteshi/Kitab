@@ -15,8 +15,7 @@ end
 desc "Sync singing"
   lane :signing do
     match # match
-
-    mapping = Action.lane_contex[
+    mapping = Action.other_action.lane_contex[
       SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
     ]
      update_code_signing_settings(
