@@ -15,6 +15,13 @@ end
 desc "Sync singing"
   lane :signing do
     match # match
+
+    mapping = Action.lane_contex[
+      SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
+    ]
+     update_code_signing_settings(
+      profile_name: mapping[ENV['MATCH_APP_IDENTIFIRE']]
+     )
 end
 
 desc "Build binary"
