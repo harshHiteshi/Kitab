@@ -14,7 +14,7 @@ end
 
 desc "Sync singing"
   lane :signing do
-    sync_code_singing # match
+    match # match
 end
 
 desc "Build binary"
