@@ -1,10 +1,8 @@
-
 default_platform(:ios)
 
 platform :ios do
   before_all do
     Dotenv.load "fastlane.env"
-    Dotenv.load "fastlane.env.ios"
   end
 
 desc "Create on Developer Portal and App Store Connect"
@@ -14,12 +12,12 @@ end
 
 desc "Sync singing"
   lane :signing do
-    match # match
-    mapping = Action.other_action.lane_contex[
+    sync_code_signing # match
+    mapping = lane_context[
       SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
     ]
      update_code_signing_settings(
-      profile_name: mapping[ENV['MATCH_APP_IDENTIFIRE']]
+      profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']]
      )
 end
 
