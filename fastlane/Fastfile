@@ -25,30 +25,17 @@ desc "Sync singing"
      )
 end
 
-desc "Increase Build Number"
-
-lane :increase_build_number do
-  mapping = lane_context[
-    SharedValues::LATEST_TESTFLIGHT_BUILD_NUMBER
-  ]
-  increment_build_number(
-  build_number: mapping[ENV['LATEST_VERSION']]
-)
-
-  end
-
 desc "Build binary"
   lane :build do
-   #signing
-   increase_build_number
+   signing
    build_ios_app #gym
 end 
 
 
 desc "Release"
   lane :release do
-  ensure_git_status_clean
-  ensure_git_branch
+ # ensure_git_status_clean
+  #ensure_git_branch
    build
    upload_to_app_store # deliver
    end
