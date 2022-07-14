@@ -39,7 +39,7 @@ lane :increase_build_number do
 
 desc "Build binary"
   lane :build do
-   signing
+   #signing
    increase_build_number
    build_ios_app #gym
 end 

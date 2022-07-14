@@ -31,6 +31,14 @@ Create on Developer Portal and App Store Connect
 
 Sync singing
 
+### ios increase_build_number
+
+```sh
+[bundle exec] fastlane ios increase_build_number
+```
+
+Increase Build Number
+
 ### ios build
 
 ```sh
