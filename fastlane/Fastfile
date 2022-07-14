@@ -1,5 +1,8 @@
+fastlane_require "dotenv"
 default_platform(:ios)
-
+before_all do
+  Dotenv.load "fastlane.env.secret"
+end
 platform :ios do
   before_all do
     Dotenv.load "fastlane.env"
@@ -30,6 +33,8 @@ end
 
 desc "Release"
   lane :release do
+  ensure_git_status_clean
+  ensure_git_branch
    build
    upload_to_app_store # deliver
    end
